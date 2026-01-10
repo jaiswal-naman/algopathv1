@@ -58,6 +58,13 @@ The backend is divided into 5 specialized "Worker Agents" and 1 "Orchestrator".
 *   **Output:** `MermaidCode` (String).
 *   **File:** `backend/app/agents/visualizer.py`
 
+#### 6. ExporterAgent (The "Scribe")
+*   **Role:** Document Generator.
+*   **Task:** Converts `LFA_JSON` into downloadable .docx and .csv files.
+*   **Input:** `LFA_JSON`.
+*   **Output:** `FilePaths` (doc, csv).
+*   **File:** `backend/app/agents/exporter.py`
+
 ---
 
 ## 4. File Structure & Responsibilities
@@ -112,6 +119,7 @@ The **Orchestrator** ensures agents don't step on each other.
     *   **Branch A:** User selects Template -> Fetch full content.
     *   **Branch B:** User rejects -> Trigger `GeneratorAgent`.
     *   *Final Sync:* Orchestrator sends logic to `VisualizerAgent`.
+    *   *Export:* User requests download -> `ExporterAgent` generates files.
     *   Orchestrator saves final artifact to DB.
 
 ---
@@ -134,3 +142,6 @@ The **Orchestrator** ensures agents don't step on each other.
 
 ### Step 4: The Interface (Next.js)
 *   [ ] Build `Wizard.tsx` (consumes the Orchestrator's step-by-step output).
+*   [ ] Build `ManualGrid.tsx` (Editable Table for Feature Parity).
+*   [ ] Implement `Export` buttons (DOCX/CSV).
+
