@@ -120,7 +120,10 @@ def main():
     seed_postgres()
 
     print("\n2. Seeding Pinecone...")
-    seed_pinecone()
+    try:
+        seed_pinecone()
+    except Exception as e:
+        print(f"Pinecone seeding skipped due to error: {e}")
 
     print("\n" + "=" * 50)
     print("Seeding complete!")
