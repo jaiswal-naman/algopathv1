@@ -1,0 +1,460 @@
+{
+  "templates": [
+    {
+      "id": "tmpl_education_001",
+      "title": "Primary Education Quality Improvement Program",
+      "description": "A comprehensive framework for improving learning outcomes in primary schools through teacher development and resource provision",
+      "category": "education",
+      "tags": ["education", "primary school", "teacher training", "learning outcomes"],
+      "preview": "Goal: Improve learning outcomes for primary school students through teacher training and resource provision.",
+      "content": {
+        "title": "Primary Education Quality Improvement Program",
+        "goal": "Improve learning outcomes for 10,000 primary school students in underserved communities",
+        "goal_indicators": [
+          "20% improvement in literacy rates among target students within 2 years",
+          "15% improvement in numeracy scores within 2 years"
+        ],
+        "assumptions": [
+          "Government continues to support public education",
+          "Communities remain engaged in school activities",
+          "Teachers remain motivated after training"
+        ],
+        "outcomes": [
+          {
+            "id": "OC1",
+            "description": "Teachers demonstrate improved pedagogical skills",
+            "indicators": ["80% of trained teachers apply new methods"],
+            "means_of_verification": ["Classroom observations", "Teacher assessments"],
+            "outputs": [
+              {
+                "id": "OP1.1",
+                "description": "Teacher training program delivered",
+                "indicators": ["200 teachers complete training program"],
+                "means_of_verification": ["Training attendance records", "Certificates issued"],
+                "activities": [
+                  {
+                    "id": "A1.1.1",
+                    "description": "Conduct needs assessment for teachers",
+                    "indicators": ["Assessment completed for all target schools"],
+                    "means_of_verification": ["Assessment reports"]
+                  },
+                  {
+                    "id": "A1.1.2",
+                    "description": "Develop training curriculum",
+                    "indicators": ["Curriculum approved by education experts"],
+                    "means_of_verification": ["Curriculum document"]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "tmpl_education_002",
+      "title": "Digital Literacy for Rural Schools",
+      "description": "Program to equip rural students with essential digital skills through computer labs and trained instructors",
+      "category": "education",
+      "tags": ["education", "digital literacy", "rural", "technology", "computer skills"],
+      "preview": "Goal: Equip rural students with essential digital skills through computer labs and trained instructors.",
+      "content": {
+        "title": "Digital Literacy for Rural Schools",
+        "goal": "Enable 5,000 rural students to achieve basic digital literacy",
+        "goal_indicators": [
+          "70% of students demonstrate basic computer proficiency",
+          "50% of students can safely navigate the internet"
+        ],
+        "assumptions": [
+          "Reliable electricity available in target schools",
+          "Internet connectivity can be established",
+          "Schools can maintain computer equipment"
+        ],
+        "outcomes": [
+          {
+            "id": "OC1",
+            "description": "Students regularly use computers for learning",
+            "indicators": ["Average 2 hours computer use per student per week"],
+            "means_of_verification": ["Usage logs", "Student surveys"],
+            "outputs": [
+              {
+                "id": "OP1.1",
+                "description": "Computer labs established in target schools",
+                "indicators": ["20 computer labs operational"],
+                "means_of_verification": ["Lab inspection reports"],
+                "activities": [
+                  {
+                    "id": "A1.1.1",
+                    "description": "Procure and install computer equipment",
+                    "indicators": ["400 computers installed across 20 schools"],
+                    "means_of_verification": ["Procurement records", "Installation reports"]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "tmpl_education_003",
+      "title": "School Infrastructure Development",
+      "description": "Framework for enhancing learning environments through infrastructure improvements",
+      "category": "education",
+      "tags": ["education", "infrastructure", "construction", "facilities"],
+      "preview": "Goal: Enhance learning environments through infrastructure improvements and facility upgrades.",
+      "content": {
+        "title": "School Infrastructure Development",
+        "goal": "Provide safe and conducive learning environments in 50 schools",
+        "goal_indicators": [
+          "All target schools meet safety standards",
+          "Student attendance increases by 15%"
+        ],
+        "assumptions": [
+          "Land rights are secured for construction",
+          "Local government provides necessary permits",
+          "Communities support construction activities"
+        ],
+        "outcomes": [
+          {
+            "id": "OC1",
+            "description": "Schools have adequate physical facilities",
+            "indicators": ["100% of target schools have functional classrooms"],
+            "means_of_verification": ["Infrastructure audit reports"],
+            "outputs": [
+              {
+                "id": "OP1.1",
+                "description": "New classrooms constructed",
+                "indicators": ["100 new classrooms built"],
+                "means_of_verification": ["Construction completion certificates"],
+                "activities": [
+                  {
+                    "id": "A1.1.1",
+                    "description": "Conduct site assessments",
+                    "indicators": ["All 50 schools assessed"],
+                    "means_of_verification": ["Assessment reports"]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "tmpl_health_001",
+      "title": "Community Health Education Initiative",
+      "description": "Program to improve community health outcomes through awareness campaigns and health worker training",
+      "category": "health",
+      "tags": ["health", "community", "awareness", "training", "prevention"],
+      "preview": "Goal: Improve community health outcomes through awareness campaigns and local health worker training.",
+      "content": {
+        "title": "Community Health Education Initiative",
+        "goal": "Improve health knowledge and practices in 100 communities",
+        "goal_indicators": [
+          "50% reduction in preventable diseases",
+          "80% awareness of key health practices"
+        ],
+        "assumptions": [
+          "Communities are receptive to health education",
+          "Health workers remain in their communities",
+          "Basic health supplies are available"
+        ],
+        "outcomes": [
+          {
+            "id": "OC1",
+            "description": "Communities adopt healthy practices",
+            "indicators": ["70% of households follow handwashing protocols"],
+            "means_of_verification": ["Household surveys", "Observation studies"],
+            "outputs": [
+              {
+                "id": "OP1.1",
+                "description": "Health awareness campaigns conducted",
+                "indicators": ["200 awareness sessions held"],
+                "means_of_verification": ["Session attendance records"],
+                "activities": [
+                  {
+                    "id": "A1.1.1",
+                    "description": "Develop health education materials",
+                    "indicators": ["Materials in 5 local languages"],
+                    "means_of_verification": ["Published materials"]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "tmpl_youth_001",
+      "title": "Youth Skill Development Program",
+      "description": "Comprehensive program to prepare youth for employment through vocational training",
+      "category": "youth",
+      "tags": ["youth", "skills", "vocational", "employment", "training"],
+      "preview": "Goal: Prepare youth for employment through vocational training and soft skills development.",
+      "content": {
+        "title": "Youth Skill Development Program",
+        "goal": "Enable 2,000 youth to gain employable skills",
+        "goal_indicators": [
+          "60% of graduates find employment within 6 months",
+          "80% of graduates report improved confidence"
+        ],
+        "assumptions": [
+          "Job market remains stable",
+          "Youth are motivated to complete training",
+          "Employers value program certification"
+        ],
+        "outcomes": [
+          {
+            "id": "OC1",
+            "description": "Youth demonstrate market-relevant skills",
+            "indicators": ["85% pass final skills assessment"],
+            "means_of_verification": ["Assessment results", "Portfolio reviews"],
+            "outputs": [
+              {
+                "id": "OP1.1",
+                "description": "Vocational training courses delivered",
+                "indicators": ["10 vocational courses offered"],
+                "means_of_verification": ["Course completion records"],
+                "activities": [
+                  {
+                    "id": "A1.1.1",
+                    "description": "Identify high-demand skills in local market",
+                    "indicators": ["Market assessment completed"],
+                    "means_of_verification": ["Market analysis report"]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "tmpl_women_001",
+      "title": "Women's Economic Empowerment Program",
+      "description": "Initiative to enhance women's economic participation through entrepreneurship support",
+      "category": "gender",
+      "tags": ["women", "empowerment", "entrepreneurship", "microfinance", "gender"],
+      "preview": "Goal: Increase women's economic independence through entrepreneurship training and microfinance.",
+      "content": {
+        "title": "Women's Economic Empowerment Program",
+        "goal": "Enable 1,000 women to establish sustainable livelihoods",
+        "goal_indicators": [
+          "70% of participants increase household income by 30%",
+          "500 new women-owned businesses registered"
+        ],
+        "assumptions": [
+          "Women have time to participate in training",
+          "Family members support women's participation",
+          "Microfinance remains accessible"
+        ],
+        "outcomes": [
+          {
+            "id": "OC1",
+            "description": "Women demonstrate business management skills",
+            "indicators": ["80% maintain accurate financial records"],
+            "means_of_verification": ["Business audits", "Mentor reports"],
+            "outputs": [
+              {
+                "id": "OP1.1",
+                "description": "Entrepreneurship training program delivered",
+                "indicators": ["1,000 women complete training"],
+                "means_of_verification": ["Training records", "Certificates"],
+                "activities": [
+                  {
+                    "id": "A1.1.1",
+                    "description": "Recruit and select participants",
+                    "indicators": ["Selection criteria applied fairly"],
+                    "means_of_verification": ["Selection committee minutes"]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "tmpl_environment_001",
+      "title": "Community Forest Conservation Program",
+      "description": "Program to protect local forests through community-based conservation",
+      "category": "environment",
+      "tags": ["environment", "forest", "conservation", "community", "sustainability"],
+      "preview": "Goal: Protect 10,000 hectares of forest through community-based conservation.",
+      "content": {
+        "title": "Community Forest Conservation Program",
+        "goal": "Protect and restore 10,000 hectares of community forest",
+        "goal_indicators": [
+          "Zero illegal logging incidents in protected areas",
+          "20% increase in forest cover in degraded areas"
+        ],
+        "assumptions": [
+          "Communities see value in forest protection",
+          "Alternative livelihoods are viable",
+          "Government recognizes community forest rights"
+        ],
+        "outcomes": [
+          {
+            "id": "OC1",
+            "description": "Communities actively manage forest resources",
+            "indicators": ["20 community forest committees functional"],
+            "means_of_verification": ["Committee meeting minutes", "Patrol logs"],
+            "outputs": [
+              {
+                "id": "OP1.1",
+                "description": "Community forest management plans developed",
+                "indicators": ["20 management plans approved"],
+                "means_of_verification": ["Approved plan documents"],
+                "activities": [
+                  {
+                    "id": "A1.1.1",
+                    "description": "Conduct participatory forest mapping",
+                    "indicators": ["Maps completed for all target areas"],
+                    "means_of_verification": ["GIS maps and reports"]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "tmpl_water_001",
+      "title": "Rural Water Supply and Sanitation",
+      "description": "Program to provide safe water and sanitation facilities to rural communities",
+      "category": "wash",
+      "tags": ["water", "sanitation", "rural", "hygiene", "WASH"],
+      "preview": "Goal: Provide safe water and sanitation to 50 rural communities.",
+      "content": {
+        "title": "Rural Water Supply and Sanitation",
+        "goal": "Provide sustainable access to safe water for 25,000 people",
+        "goal_indicators": [
+          "80% of target population has access within 500m",
+          "50% reduction in waterborne diseases"
+        ],
+        "assumptions": [
+          "Groundwater sources are sufficient",
+          "Communities can maintain infrastructure",
+          "Water quality remains acceptable"
+        ],
+        "outcomes": [
+          {
+            "id": "OC1",
+            "description": "Communities have functional water systems",
+            "indicators": ["95% of systems operational after 1 year"],
+            "means_of_verification": ["System functionality audits"],
+            "outputs": [
+              {
+                "id": "OP1.1",
+                "description": "Water points constructed",
+                "indicators": ["100 water points installed"],
+                "means_of_verification": ["Construction completion reports"],
+                "activities": [
+                  {
+                    "id": "A1.1.1",
+                    "description": "Conduct hydrogeological surveys",
+                    "indicators": ["All sites surveyed"],
+                    "means_of_verification": ["Survey reports"]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "tmpl_nutrition_001",
+      "title": "School Nutrition Program",
+      "description": "Program to improve child nutrition through school feeding and nutrition education",
+      "category": "nutrition",
+      "tags": ["nutrition", "school", "feeding", "children", "health"],
+      "preview": "Goal: Improve nutritional status of 15,000 school children.",
+      "content": {
+        "title": "School Nutrition Program",
+        "goal": "Reduce malnutrition among 15,000 school children",
+        "goal_indicators": [
+          "30% reduction in underweight children",
+          "20% reduction in anemia prevalence"
+        ],
+        "assumptions": [
+          "Food supply chains remain stable",
+          "Schools have adequate kitchen facilities",
+          "Parents support the program"
+        ],
+        "outcomes": [
+          {
+            "id": "OC1",
+            "description": "Children receive nutritious daily meals",
+            "indicators": ["90% of enrolled children eat school meals daily"],
+            "means_of_verification": ["Meal distribution records"],
+            "outputs": [
+              {
+                "id": "OP1.1",
+                "description": "School kitchens operational",
+                "indicators": ["50 school kitchens functional"],
+                "means_of_verification": ["Kitchen inspection reports"],
+                "activities": [
+                  {
+                    "id": "A1.1.1",
+                    "description": "Upgrade kitchen facilities",
+                    "indicators": ["All kitchens meet hygiene standards"],
+                    "means_of_verification": ["Facility audit reports"]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "tmpl_governance_001",
+      "title": "Local Governance Strengthening",
+      "description": "Program to improve local government capacity and citizen engagement",
+      "category": "governance",
+      "tags": ["governance", "local government", "capacity building", "transparency"],
+      "preview": "Goal: Strengthen local governance and citizen participation in 30 municipalities.",
+      "content": {
+        "title": "Local Governance Strengthening",
+        "goal": "Improve governance quality in 30 local government units",
+        "goal_indicators": [
+          "50% improvement in citizen satisfaction scores",
+          "All target units publish annual budgets"
+        ],
+        "assumptions": [
+          "Political will for reform exists",
+          "Staff remain in positions",
+          "Citizens engage in governance processes"
+        ],
+        "outcomes": [
+          {
+            "id": "OC1",
+            "description": "Local governments demonstrate improved transparency",
+            "indicators": ["100% publish quarterly financial reports"],
+            "means_of_verification": ["Published reports", "Audit findings"],
+            "outputs": [
+              {
+                "id": "OP1.1",
+                "description": "Capacity building program delivered",
+                "indicators": ["300 officials trained"],
+                "means_of_verification": ["Training records"],
+                "activities": [
+                  {
+                    "id": "A1.1.1",
+                    "description": "Assess capacity gaps",
+                    "indicators": ["Assessment completed for all units"],
+                    "means_of_verification": ["Assessment reports"]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}
