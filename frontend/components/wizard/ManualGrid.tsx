@@ -202,7 +202,7 @@ export function ManualGrid({ data, onChange }: ManualGridProps) {
                                     <div className="pl-6 mt-2 border-l-2 border-purple-200 ml-2">
                                         <div className="flex justify-between items-center mb-1">
                                             <span className="text-xs font-bold text-purple-600">Activities</span>
-                                            <Button size="xs" variant="ghost" onClick={() => addActivity(i, j)} className="h-5 text-[10px]">+ Activity</Button>
+                                            <Button size="sm" variant="ghost" onClick={() => addActivity(i, j)} className="h-5 text-[10px] px-1">+ Activity</Button>
                                         </div>
                                         {output.activities.map((activity, k) => (
                                             <div key={k} className="flex gap-2 mb-1 items-center">
