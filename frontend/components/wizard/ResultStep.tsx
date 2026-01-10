@@ -5,7 +5,9 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { MermaidDiagram } from "./MermaidDiagram";
+import { ManualGrid } from "./ManualGrid";
 import type { LFADocument } from "@/types";
+import { api } from "@/lib/api";
 import {
   Target,
   TrendingUp,
@@ -18,6 +20,8 @@ import {
   Check,
   ChevronDown,
   ChevronRight,
+  Loader2,
+  Table,
 } from "lucide-react";
 
 interface ResultStepProps {
@@ -31,7 +35,7 @@ interface ResultStepProps {
   onReset: () => void;
 }
 
-type ViewTab = "diagram" | "document" | "code";
+type ViewTab = "diagram" | "document" | "code" | "editor";
 type DiagramType = "flowchart" | "mindmap" | "journey";
 
 export function ResultStep({
@@ -43,6 +47,8 @@ export function ResultStep({
   const [activeTab, setActiveTab] = useState<ViewTab>("diagram");
   const [diagramType, setDiagramType] = useState<DiagramType>("flowchart");
   const [copied, setCopied] = useState(false);
+  const [localDocument, setLocalDocument] = useState<LFADocument>(lfaDocument);
+  const [isExporting, setIsExporting] = useState(false);
   const [expandedOutcomes, setExpandedOutcomes] = useState<Set<string>>(
     new Set(lfaDocument.outcomes.map((o) => o.id))
   );
@@ -71,17 +77,53 @@ export function ResultStep({
   };
 
   const handleDownload = () => {
-    const blob = new Blob([JSON.stringify(lfaDocument, null, 2)], {
+    const blob = new Blob([JSON.stringify(localDocument, null, 2)], {
       type: "application/json",
     });
     const url = URL.createObjectURL(blob);
     const a = document.createElement("a");
     a.href = url;
-    a.download = `${lfaDocument.title.replace(/\s+/g, "_")}_LFA.json`;
+    a.download = `${localDocument.title.replace(/\s+/g, "_")}_LFA.json`;
     document.body.appendChild(a);
     a.click();
     document.body.removeChild(a);
     URL.revokeObjectURL(url);
+  };
+
+  const handleExport = async (format: "csv" | "docx") => {
+    setIsExporting(true);
+    try {
+      // Assuming sessionId is needed but ResultStep doesn't have it in props yet.
+      // For now, we'll implement a direct download if the API supports sending data body.
+      // If API requires session_id, we need to pass it down. 
+      // However, the api/export endpoint I wrote accepts lfa_data override.
+
+      const response = await fetch("http://localhost:8000/api/export", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          session_id: "manual_override", // Placeholder
+          format: format,
+          lfa_data: localDocument
+        })
+      });
+
+      if (!response.ok) throw new Error("Export failed");
+
+      const blob = await response.blob();
+      const url = window.URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = `${localDocument.title.replace(/\s+/g, "_")}.${format}`;
+      document.body.appendChild(a);
+      a.click();
+      window.URL.revokeObjectURL(url);
+    } catch (e) {
+      console.error(e);
+      alert("Export failed: " + e);
+    } finally {
+      setIsExporting(false);
+    }
   };
 
   return (
@@ -103,9 +145,13 @@ export function ResultStep({
             )}
             {copied ? "Copied!" : "Copy"}
           </Button>
-          <Button variant="outline" size="sm" onClick={handleDownload}>
-            <Download className="h-4 w-4 mr-1" />
-            Download
+          <Button variant="outline" size="sm" onClick={() => handleExport('csv')} disabled={isExporting}>
+            {isExporting ? <Loader2 className="h-4 w-4 animate-spin" /> : <Download className="h-4 w-4 mr-1" />}
+            CSV
+          </Button>
+          <Button variant="outline" size="sm" onClick={() => handleExport('docx')} disabled={isExporting}>
+            {isExporting ? <Loader2 className="h-4 w-4 animate-spin" /> : <Download className="h-4 w-4 mr-1" />}
+            Word
           </Button>
           <Button variant="outline" size="sm" onClick={onReset}>
             <RefreshCw className="h-4 w-4 mr-1" />
@@ -116,15 +162,14 @@ export function ResultStep({
 
       {/* Tabs */}
       <div className="flex border-b">
-        {(["diagram", "document", "code"] as ViewTab[]).map((tab) => (
+        {(["diagram", "document", "editor", "code"] as ViewTab[]).map((tab) => (
           <button
             key={tab}
             onClick={() => setActiveTab(tab)}
-            className={`px-4 py-2 text-sm font-medium border-b-2 transition-colors ${
-              activeTab === tab
-                ? "border-primary text-primary"
-                : "border-transparent text-muted-foreground hover:text-foreground"
-            }`}
+            className={`px-4 py-2 text-sm font-medium border-b-2 transition-colors ${activeTab === tab
+              ? "border-primary text-primary"
+              : "border-transparent text-muted-foreground hover:text-foreground"
+              }`}
           >
             {tab.charAt(0).toUpperCase() + tab.slice(1)}
           </button>
@@ -159,6 +204,15 @@ export function ResultStep({
             </CardContent>
           </Card>
         </div>
+      )}
+
+      {/* Editor View */}
+      {activeTab === "editor" && (
+        <Card>
+          <CardContent className="p-0">
+            <ManualGrid data={localDocument} onChange={setLocalDocument} />
+          </CardContent>
+        </Card>
       )}
 
       {/* Document View */}
