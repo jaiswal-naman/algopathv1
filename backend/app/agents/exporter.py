@@ -22,38 +22,47 @@ class Exporter:
         """
         Convert LFA to CSV string.
         Structure: Level, Description, Indicators, Verification, Assumptions
+
+        LFA structure is hierarchical:
+        - Goal at root with goal_indicators and assumptions
+        - Outcomes contain Outputs
+        - Outputs contain Activities
         """
         output = StringIO()
         writer = csv.writer(output)
-        
+
         # Header
-        writer.writerow(["Level", "Description", "Indicators", "Means of Verification", "Assumptions/Risks"])
-        
+        writer.writerow(["Level", "ID", "Description", "Indicators", "Means of Verification", "Assumptions"])
+
         # Goal (Impact)
         goal = lfa_data.get("goal", "")
-        writer.writerow(["Goal", goal, "", "", ""])
+        goal_indicators = "; ".join(lfa_data.get("goal_indicators", []))
+        assumptions = "; ".join(lfa_data.get("assumptions", []))
+        writer.writerow(["Goal", "", goal, goal_indicators, "", assumptions])
 
-        # Outcomes
+        # Iterate through hierarchical structure: Outcomes -> Outputs -> Activities
         for outcome in lfa_data.get("outcomes", []):
-            desc = outcome.get("description", "")
-            indicators = "; ".join(outcome.get("indicators", []))
-            verification = "; ".join(outcome.get("verification_means", []))
-            assumptions = "; ".join(outcome.get("assumptions", []))
-            writer.writerow(["Outcome", desc, indicators, verification, assumptions])
+            outcome_id = outcome.get("id", "")
+            outcome_desc = outcome.get("description", "")
+            outcome_indicators = "; ".join(outcome.get("indicators", []))
+            outcome_verification = "; ".join(outcome.get("means_of_verification", []))
+            writer.writerow(["Outcome", outcome_id, outcome_desc, outcome_indicators, outcome_verification, ""])
 
-        # Outputs
-        for output_item in lfa_data.get("outputs", []):
-            desc = output_item.get("description", "")
-            indicators = "; ".join(output_item.get("indicators", []))
-            verification = "; ".join(output_item.get("verification_means", []))
-            assumptions = "; ".join(output_item.get("assumptions", []))
-            writer.writerow(["Output", desc, indicators, verification, assumptions])
+            # Outputs within this Outcome
+            for output_item in outcome.get("outputs", []):
+                output_id = output_item.get("id", "")
+                output_desc = output_item.get("description", "")
+                output_indicators = "; ".join(output_item.get("indicators", []))
+                output_verification = "; ".join(output_item.get("means_of_verification", []))
+                writer.writerow(["Output", output_id, output_desc, output_indicators, output_verification, ""])
 
-        # Activities
-        for activity in lfa_data.get("activities", []):
-            desc = activity.get("description", "")
-            # Activities usually have inputs/costs instead of indicators, but mapping to LFA standard
-            writer.writerow(["Activity", desc, "", "", ""])
+                # Activities within this Output
+                for activity in output_item.get("activities", []):
+                    activity_id = activity.get("id", "")
+                    activity_desc = activity.get("description", "")
+                    activity_indicators = "; ".join(activity.get("indicators", []))
+                    activity_verification = "; ".join(activity.get("means_of_verification", []))
+                    writer.writerow(["Activity", activity_id, activity_desc, activity_indicators, activity_verification, ""])
 
         return output.getvalue()
 
@@ -100,27 +109,29 @@ class Exporter:
         # Goal
         row = table.add_row().cells
         row[0].text = f"GOAL: {lfa_data.get('goal', '')}"
-        
-        # Outcomes
+        row[1].text = "\n".join(lfa_data.get("goal_indicators", []))
+        row[3].text = "\n".join(lfa_data.get("assumptions", []))
+
+        # Iterate through hierarchical structure: Outcomes -> Outputs -> Activities
         for outcome in lfa_data.get("outcomes", []):
             row = table.add_row().cells
-            row[0].text = f"OUTCOME: {outcome.get('description', '')}"
+            row[0].text = f"OUTCOME ({outcome.get('id', '')}): {outcome.get('description', '')}"
             row[1].text = "\n".join(outcome.get("indicators", []))
-            row[2].text = "\n".join(outcome.get("verification_means", []))
-            row[3].text = "\n".join(outcome.get("assumptions", []))
+            row[2].text = "\n".join(outcome.get("means_of_verification", []))
 
-        # Outputs
-        for output_item in lfa_data.get("outputs", []):
-            row = table.add_row().cells
-            row[0].text = f"OUTPUT: {output_item.get('description', '')}"
-            row[1].text = "\n".join(output_item.get("indicators", []))
-            row[2].text = "\n".join(output_item.get("verification_means", []))
-            row[3].text = "\n".join(output_item.get("assumptions", []))
+            # Outputs within this Outcome
+            for output_item in outcome.get("outputs", []):
+                row = table.add_row().cells
+                row[0].text = f"  OUTPUT ({output_item.get('id', '')}): {output_item.get('description', '')}"
+                row[1].text = "\n".join(output_item.get("indicators", []))
+                row[2].text = "\n".join(output_item.get("means_of_verification", []))
 
-        # Activities
-        for activity in lfa_data.get("activities", []):
-            row = table.add_row().cells
-            row[0].text = f"ACTIVITY: {activity.get('description', '')}"
+                # Activities within this Output
+                for activity in output_item.get("activities", []):
+                    row = table.add_row().cells
+                    row[0].text = f"    ACTIVITY ({activity.get('id', '')}): {activity.get('description', '')}"
+                    row[1].text = "\n".join(activity.get("indicators", []))
+                    row[2].text = "\n".join(activity.get("means_of_verification", []))
         
         buffer = BytesIO()
         document.save(buffer)
