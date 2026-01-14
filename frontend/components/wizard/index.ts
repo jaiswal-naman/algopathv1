@@ -12,4 +12,5 @@ export { InteractivePyramid } from "./InteractivePyramid";
 export { HealthScoreDashboard } from "./HealthScoreDashboard";
 export { WhatIfEngine } from "./WhatIfEngine";
 export { TheoryOfChange } from "./TheoryOfChange";
-export { AchievementBadges } from "./AchievementBadges";
+export { LogframeMatrix } from "./LogframeMatrix";
+export { ExportControlsPanel } from "./ExportControlsPanel";
