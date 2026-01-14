@@ -9,8 +9,20 @@ venv/
 .venv/
 pip-log.txt
 pip-delete-this-directory.txt
+
+# Environment files (NEVER commit these!)
 .env
 .env.local
+.env.production
+.env.development
+backend/.env
+frontend/.env.local
+*.env
+
+# Exported files (contain sensitive data)
+*.docx
+*.csv
+lfa_export_*
 
 # Node.js
 node_modules/

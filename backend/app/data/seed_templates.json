@@ -455,6 +455,596 @@
           }
         ]
       }
+    },
+    {
+      "id": "tmpl_fln_001",
+      "title": "Foundational Literacy & Numeracy (FLN) Program",
+      "description": "Comprehensive FLN program aligned with NIPUN Bharat mission to ensure grade-level reading and math competency by Grade 3",
+      "category": "education",
+      "tags": ["FLN", "NIPUN Bharat", "literacy", "numeracy", "primary", "Shikshagraha"],
+      "preview": "Goal: All children achieve foundational literacy and numeracy by end of Grade 3.",
+      "content": {
+        "title": "Foundational Literacy & Numeracy (FLN) Program",
+        "goal": "Ensure all children in target schools achieve grade-appropriate FLN competencies by Grade 3",
+        "student_level_change": "Students can read with comprehension at grade level and perform basic arithmetic operations",
+        "program_theme": "Foundational Literacy & Numeracy",
+        "system_level": "School",
+        "goal_indicators": [
+          "80% of Grade 3 students read at least 30 words per minute with comprehension",
+          "75% of Grade 3 students solve 2-digit addition/subtraction problems correctly"
+        ],
+        "assumptions": [
+          "Teachers attend school regularly",
+          "FLN materials are available in local language",
+          "CRPs conduct regular school visits"
+        ],
+        "stakeholder_practice_changes": {
+          "teachers": ["Use structured pedagogy for daily FLN instruction", "Conduct weekly formative assessments", "Maintain student progress tracking portfolios"],
+          "head_masters": ["Allocate dedicated FLN time in school timetable", "Observe FLN classes weekly", "Review student progress data monthly"],
+          "crp_crcc": ["Conduct model FLN lessons during school visits", "Provide feedback on teacher's FLN instruction", "Organize cluster-level FLN workshops"],
+          "brp_beo": ["Monitor FLN progress across schools", "Ensure material availability", "Address teacher attendance issues"],
+          "deo_diet": ["Conduct FLN capacity building for CRPs", "Analyze district FLN data", "Share best practices across blocks"]
+        },
+        "outcomes": [
+          {
+            "id": "OC1",
+            "description": "Teachers effectively deliver FLN instruction using structured pedagogy",
+            "indicators": ["85% of teachers follow FLN lesson plans daily", "90% of classes have active FLN corners"],
+            "means_of_verification": ["CRP observation reports", "Classroom walkthroughs"],
+            "outputs": [
+              {
+                "id": "OP1.1",
+                "description": "FLN teacher training program delivered",
+                "indicators": ["100% of target teachers complete 5-day FLN training"],
+                "means_of_verification": ["DIET training records", "Pre-post assessment scores"],
+                "activities": [
+                  {
+                    "id": "A1.1.1",
+                    "description": "Conduct FLN training for primary teachers at DIET",
+                    "indicators": ["500 teachers trained across district"],
+                    "means_of_verification": ["Training attendance sheets"],
+                    "responsible_stakeholder": "DIET"
+                  },
+                  {
+                    "id": "A1.1.2",
+                    "description": "Distribute FLN teaching-learning materials",
+                    "indicators": ["All target schools receive FLN kits"],
+                    "means_of_verification": ["Material distribution records"],
+                    "responsible_stakeholder": "BEO"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "OC2",
+            "description": "CRPs provide effective academic support for FLN",
+            "indicators": ["CRPs conduct 4 school visits per month", "80% of visits include FLN classroom observation"],
+            "means_of_verification": ["CRP visit logs", "School visit reports"],
+            "outputs": [
+              {
+                "id": "OP2.1",
+                "description": "CRP capacity built on FLN mentoring",
+                "indicators": ["All CRPs complete FLN mentoring training"],
+                "means_of_verification": ["Training completion records"],
+                "activities": [
+                  {
+                    "id": "A2.1.1",
+                    "description": "Train CRPs on FLN observation and feedback",
+                    "indicators": ["100 CRPs trained"],
+                    "means_of_verification": ["Training records"],
+                    "responsible_stakeholder": "DIET"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "tmpl_fln_002",
+      "title": "NIPUN Bharat Implementation Framework",
+      "description": "State-level framework for implementing NIPUN Bharat mission with district-block-cluster-school cascade",
+      "category": "education",
+      "tags": ["NIPUN Bharat", "FLN", "state program", "mission mode", "Shikshagraha"],
+      "preview": "Goal: Achieve NIPUN Bharat targets through systematic implementation across all system levels.",
+      "content": {
+        "title": "NIPUN Bharat Implementation Framework",
+        "goal": "Achieve universal foundational literacy and numeracy by 2026-27 as per NIPUN Bharat mission",
+        "student_level_change": "All children achieve NIPUN Lakshyas (learning goals) by end of Grade 3",
+        "program_theme": "Foundational Literacy & Numeracy",
+        "system_level": "State",
+        "goal_indicators": [
+          "State achieves 80% proficiency on NIPUN Lakshyas assessment",
+          "100% of schools implement dedicated FLN periods"
+        ],
+        "assumptions": [
+          "State education department prioritizes NIPUN Bharat",
+          "Budget allocation for FLN materials continues",
+          "NCERT/SCERT guidelines are followed"
+        ],
+        "stakeholder_practice_changes": {
+          "teachers": ["Implement Balvatika/foundational stage curriculum", "Use NIPUN Bharat TLM", "Track Lakshya achievement for each child"],
+          "head_masters": ["Ensure 2.5 hours daily FLN instruction", "Submit monthly NIPUN progress reports", "Conduct parent meetings on FLN"],
+          "crp_crcc": ["Use NIPUN observation checklist", "Mentor teachers on Lakshya-based teaching", "Facilitate cluster FLN review meetings"],
+          "brp_beo": ["Review block NIPUN dashboard weekly", "Address low-performing schools", "Coordinate with DIET for training"],
+          "deo_diet": ["Analyze state NIPUN data", "Design state-specific FLN interventions", "Conduct quarterly reviews"]
+        },
+        "outcomes": [
+          {
+            "id": "OC1",
+            "description": "State education system aligned with NIPUN Bharat framework",
+            "indicators": ["100% of blocks have NIPUN implementation plans"],
+            "means_of_verification": ["State monitoring dashboard", "Block reports"],
+            "outputs": [
+              {
+                "id": "OP1.1",
+                "description": "NIPUN Bharat cascade training completed",
+                "indicators": ["All teachers trained on NIPUN pedagogy"],
+                "means_of_verification": ["Training MIS data"],
+                "activities": [
+                  {
+                    "id": "A1.1.1",
+                    "description": "Train master trainers at state level",
+                    "indicators": ["200 master trainers certified"],
+                    "means_of_verification": ["Certification records"],
+                    "responsible_stakeholder": "SCERT"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "tmpl_teacher_001",
+      "title": "Teacher Professional Development Program",
+      "description": "Comprehensive TPD program using NISHTHA framework with continuous support from CRPs",
+      "category": "education",
+      "tags": ["TPD", "teacher training", "NISHTHA", "professional development", "Shikshagraha"],
+      "preview": "Goal: Build teacher capacity through structured professional development and mentoring.",
+      "content": {
+        "title": "Teacher Professional Development Program",
+        "goal": "Enhance teaching quality through systematic professional development of all teachers",
+        "student_level_change": "Students experience engaging, learner-centered classroom instruction",
+        "program_theme": "Teacher Professional Development",
+        "system_level": "Block",
+        "goal_indicators": [
+          "80% of teachers demonstrate improved classroom practice",
+          "Student engagement scores improve by 30%"
+        ],
+        "assumptions": [
+          "Teachers are released for training",
+          "DIET has capacity to deliver training",
+          "CRPs are trained as mentors"
+        ],
+        "stakeholder_practice_changes": {
+          "teachers": ["Apply learner-centered pedagogy", "Use formative assessment daily", "Participate in peer learning circles"],
+          "head_masters": ["Create teacher learning communities", "Provide constructive feedback", "Model good teaching practices"],
+          "crp_crcc": ["Conduct demo lessons", "Facilitate peer observations", "Document teacher growth"],
+          "brp_beo": ["Ensure training participation", "Monitor practice adoption", "Recognize excellent teachers"],
+          "deo_diet": ["Design context-appropriate training", "Certify teachers", "Track TPD impact"]
+        },
+        "outcomes": [
+          {
+            "id": "OC1",
+            "description": "Teachers adopt learner-centered teaching practices",
+            "indicators": ["70% of observed lessons show student participation"],
+            "means_of_verification": ["Classroom observation data", "CRP reports"],
+            "outputs": [
+              {
+                "id": "OP1.1",
+                "description": "TPD modules delivered to all teachers",
+                "indicators": ["100% of teachers complete TPD program"],
+                "means_of_verification": ["Training completion data"],
+                "activities": [
+                  {
+                    "id": "A1.1.1",
+                    "description": "Conduct face-to-face TPD workshops at cluster level",
+                    "indicators": ["Monthly workshops held in all clusters"],
+                    "means_of_verification": ["Workshop reports"],
+                    "responsible_stakeholder": "CRP"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "tmpl_leadership_001",
+      "title": "School Leadership Development Program",
+      "description": "Program to develop Head Masters as instructional leaders and school improvement champions",
+      "category": "education",
+      "tags": ["leadership", "head master", "HM", "school improvement", "Shikshagraha"],
+      "preview": "Goal: Transform Head Masters into effective instructional leaders.",
+      "content": {
+        "title": "School Leadership Development Program",
+        "goal": "Develop Head Masters as instructional leaders who drive school improvement",
+        "student_level_change": "Students benefit from well-managed schools with strong academic focus",
+        "program_theme": "School Leadership",
+        "system_level": "School",
+        "goal_indicators": [
+          "80% of HMs demonstrate instructional leadership behaviors",
+          "School Development Plans implemented in all target schools"
+        ],
+        "assumptions": [
+          "HMs have time for leadership activities beyond administration",
+          "Block officials support HM autonomy",
+          "Resources for school improvement are available"
+        ],
+        "stakeholder_practice_changes": {
+          "teachers": ["Participate in school improvement planning", "Accept peer observation", "Collaborate with HM on goals"],
+          "head_masters": ["Conduct regular classroom observations", "Lead school improvement planning", "Mentor new teachers"],
+          "crp_crcc": ["Support HMs in leadership role", "Facilitate HM peer learning", "Co-observe classrooms with HM"],
+          "brp_beo": ["Recognize effective HM leadership", "Provide HM with decision-making authority", "Address HM challenges"],
+          "deo_diet": ["Design HM leadership modules", "Create HM peer networks", "Document leadership best practices"]
+        },
+        "outcomes": [
+          {
+            "id": "OC1",
+            "description": "HMs regularly conduct instructional supervision",
+            "indicators": ["HMs observe 5 lessons per week", "Feedback provided to teachers within 24 hours"],
+            "means_of_verification": ["HM observation logs", "Teacher feedback forms"],
+            "outputs": [
+              {
+                "id": "OP1.1",
+                "description": "HM leadership training program delivered",
+                "indicators": ["All HMs complete leadership module"],
+                "means_of_verification": ["Training records"],
+                "activities": [
+                  {
+                    "id": "A1.1.1",
+                    "description": "Conduct HM leadership workshops at block level",
+                    "indicators": ["Quarterly workshops held"],
+                    "means_of_verification": ["Workshop attendance"],
+                    "responsible_stakeholder": "BRP"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "tmpl_mentoring_001",
+      "title": "Academic Mentoring by CRPs/BRPs",
+      "description": "Structured academic mentoring program with CRPs and BRPs providing on-site teacher support",
+      "category": "education",
+      "tags": ["mentoring", "CRP", "BRP", "academic support", "Shikshagraha"],
+      "preview": "Goal: Establish effective academic mentoring system through CRPs and BRPs.",
+      "content": {
+        "title": "Academic Mentoring by CRPs/BRPs",
+        "goal": "Build a functional academic support system through trained CRPs and BRPs",
+        "student_level_change": "Students receive quality instruction from well-supported teachers",
+        "program_theme": "Academic Mentoring",
+        "system_level": "Cluster",
+        "goal_indicators": [
+          "Every school receives 2 CRP visits per month",
+          "Teacher practice improves in 80% of mentored schools"
+        ],
+        "assumptions": [
+          "CRPs have transportation to visit schools",
+          "CRPs are not overburdened with non-academic work",
+          "Schools welcome CRP visits"
+        ],
+        "stakeholder_practice_changes": {
+          "teachers": ["Implement CRP feedback in lessons", "Prepare for CRP visits", "Request specific support from CRP"],
+          "head_masters": ["Facilitate CRP-teacher interactions", "Act on CRP recommendations", "Participate in cluster meetings"],
+          "crp_crcc": ["Follow structured visit protocol", "Provide demo lessons", "Document teacher progress"],
+          "brp_beo": ["Review CRP visit data weekly", "Support CRPs with resources", "Address systemic issues identified by CRPs"],
+          "deo_diet": ["Train CRPs on mentoring skills", "Monitor mentoring quality", "Celebrate effective mentoring"]
+        },
+        "outcomes": [
+          {
+            "id": "OC1",
+            "description": "CRPs conduct regular and meaningful school visits",
+            "indicators": ["100% of planned visits completed", "70% of visits include classroom observation"],
+            "means_of_verification": ["Visit tracking system", "School log books"],
+            "outputs": [
+              {
+                "id": "OP1.1",
+                "description": "CRP mentoring toolkit developed and deployed",
+                "indicators": ["All CRPs have mentoring toolkit"],
+                "means_of_verification": ["Distribution records"],
+                "activities": [
+                  {
+                    "id": "A1.1.1",
+                    "description": "Train CRPs on mentoring protocols",
+                    "indicators": ["All CRPs complete mentoring training"],
+                    "means_of_verification": ["Training records"],
+                    "responsible_stakeholder": "DIET"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "tmpl_assessment_001",
+      "title": "Formative Assessment Implementation",
+      "description": "Program to embed formative assessment practices in classrooms for continuous learning improvement",
+      "category": "education",
+      "tags": ["assessment", "formative", "learning outcomes", "FLN", "Shikshagraha"],
+      "preview": "Goal: Teachers use formative assessment to improve student learning daily.",
+      "content": {
+        "title": "Formative Assessment Implementation",
+        "goal": "Embed formative assessment in daily classroom practice to improve learning outcomes",
+        "student_level_change": "Students receive timely feedback and targeted support based on assessment data",
+        "program_theme": "Assessment & Learning Outcomes",
+        "system_level": "School",
+        "goal_indicators": [
+          "90% of teachers conduct daily formative assessment",
+          "Student learning gaps reduced by 40%"
+        ],
+        "assumptions": [
+          "Teachers understand formative vs summative assessment",
+          "Time is allocated for assessment",
+          "Assessment data is used for instruction"
+        ],
+        "stakeholder_practice_changes": {
+          "teachers": ["Use exit tickets daily", "Maintain student progress trackers", "Differentiate instruction based on data"],
+          "head_masters": ["Review assessment data weekly", "Support teachers in data-based planning", "Report learning progress to parents"],
+          "crp_crcc": ["Model formative assessment techniques", "Help teachers analyze data", "Share assessment tools across schools"],
+          "brp_beo": ["Monitor assessment practices", "Ensure assessment materials available", "Review block learning data"],
+          "deo_diet": ["Develop assessment tools", "Train teachers on formative assessment", "Analyze district learning trends"]
+        },
+        "outcomes": [
+          {
+            "id": "OC1",
+            "description": "Teachers use assessment data to adjust instruction",
+            "indicators": ["80% of teachers show differentiated instruction"],
+            "means_of_verification": ["Classroom observations", "Lesson plan reviews"],
+            "outputs": [
+              {
+                "id": "OP1.1",
+                "description": "Formative assessment toolkit provided",
+                "indicators": ["All schools have assessment toolkit"],
+                "means_of_verification": ["Distribution records"],
+                "activities": [
+                  {
+                    "id": "A1.1.1",
+                    "description": "Train teachers on formative assessment",
+                    "indicators": ["All teachers trained"],
+                    "means_of_verification": ["Training records"],
+                    "responsible_stakeholder": "CRP"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "tmpl_edtech_001",
+      "title": "EdTech Integration in Classrooms",
+      "description": "Program to effectively integrate educational technology in teaching-learning process",
+      "category": "education",
+      "tags": ["EdTech", "technology", "digital", "ICT", "Shikshagraha"],
+      "preview": "Goal: Teachers effectively use EdTech tools to enhance learning.",
+      "content": {
+        "title": "EdTech Integration in Classrooms",
+        "goal": "Integrate educational technology meaningfully into classroom instruction",
+        "student_level_change": "Students engage with digital learning resources that enhance understanding",
+        "program_theme": "EdTech Integration",
+        "system_level": "School",
+        "goal_indicators": [
+          "70% of teachers use EdTech tools weekly",
+          "Student digital literacy improves by 50%"
+        ],
+        "assumptions": [
+          "Schools have basic technology infrastructure",
+          "Internet connectivity available",
+          "Teachers have basic digital skills"
+        ],
+        "stakeholder_practice_changes": {
+          "teachers": ["Use DIKSHA/educational apps in lessons", "Create digital content", "Assign digital homework"],
+          "head_masters": ["Ensure ICT lab time allocation", "Monitor EdTech usage", "Troubleshoot technical issues"],
+          "crp_crcc": ["Demo EdTech integration in lessons", "Share digital resources", "Support technical troubleshooting"],
+          "brp_beo": ["Monitor ICT infrastructure", "Coordinate EdTech training", "Address connectivity issues"],
+          "deo_diet": ["Curate digital content", "Train teachers on EdTech", "Monitor DIKSHA usage data"]
+        },
+        "outcomes": [
+          {
+            "id": "OC1",
+            "description": "Teachers confidently use EdTech in instruction",
+            "indicators": ["80% of teachers integrate DIKSHA content weekly"],
+            "means_of_verification": ["DIKSHA usage analytics", "Classroom observations"],
+            "outputs": [
+              {
+                "id": "OP1.1",
+                "description": "EdTech training program delivered",
+                "indicators": ["All teachers complete EdTech training"],
+                "means_of_verification": ["Training records"],
+                "activities": [
+                  {
+                    "id": "A1.1.1",
+                    "description": "Conduct hands-on EdTech workshops",
+                    "indicators": ["Monthly workshops in all blocks"],
+                    "means_of_verification": ["Workshop reports"],
+                    "responsible_stakeholder": "DIET"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "tmpl_community_001",
+      "title": "Community & SMC Engagement Program",
+      "description": "Program to strengthen School Management Committee engagement and community participation",
+      "category": "education",
+      "tags": ["SMC", "community", "parent engagement", "governance", "Shikshagraha"],
+      "preview": "Goal: Active SMCs and engaged communities supporting school improvement.",
+      "content": {
+        "title": "Community & SMC Engagement Program",
+        "goal": "Build active School Management Committees that support school improvement",
+        "student_level_change": "Students benefit from community-supported school environment",
+        "program_theme": "Community & SMC Engagement",
+        "system_level": "School",
+        "goal_indicators": [
+          "80% of SMCs meet monthly",
+          "SMC School Development Plans implemented in 70% of schools"
+        ],
+        "assumptions": [
+          "Community members are willing to participate",
+          "SMC members are oriented to their roles",
+          "School is accessible to community"
+        ],
+        "stakeholder_practice_changes": {
+          "teachers": ["Communicate regularly with parents", "Share student progress in SMC meetings", "Welcome parent classroom visits"],
+          "head_masters": ["Convene monthly SMC meetings", "Share school data with SMC", "Implement SMC decisions"],
+          "crp_crcc": ["Attend SMC meetings periodically", "Orient new SMC members", "Share best practices across SMCs"],
+          "brp_beo": ["Monitor SMC functionality", "Recognize active SMCs", "Support SMC capacity building"],
+          "deo_diet": ["Train SMC members", "Monitor SMC data", "Facilitate SMC-school coordination"]
+        },
+        "outcomes": [
+          {
+            "id": "OC1",
+            "description": "SMCs actively participate in school governance",
+            "indicators": ["Monthly meetings held in 90% of schools", "70% attendance in SMC meetings"],
+            "means_of_verification": ["SMC meeting minutes", "Attendance registers"],
+            "outputs": [
+              {
+                "id": "OP1.1",
+                "description": "SMC training program delivered",
+                "indicators": ["All SMC members trained on roles"],
+                "means_of_verification": ["Training records"],
+                "activities": [
+                  {
+                    "id": "A1.1.1",
+                    "description": "Conduct SMC orientation workshops",
+                    "indicators": ["Workshops held in all clusters"],
+                    "means_of_verification": ["Workshop attendance"],
+                    "responsible_stakeholder": "CRP"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "tmpl_career_001",
+      "title": "Career Readiness & Life Skills Program",
+      "description": "Program to develop career awareness and life skills among secondary school students",
+      "category": "education",
+      "tags": ["career", "life skills", "secondary", "employability", "Shikshagraha"],
+      "preview": "Goal: Students develop career awareness and essential life skills.",
+      "content": {
+        "title": "Career Readiness & Life Skills Program",
+        "goal": "Equip secondary students with career awareness and essential life skills",
+        "student_level_change": "Students make informed career choices and demonstrate key life skills",
+        "program_theme": "Career Readiness & Life Skills",
+        "system_level": "School",
+        "goal_indicators": [
+          "80% of students create career plans",
+          "70% of students demonstrate improved communication skills"
+        ],
+        "assumptions": [
+          "Career guidance resources are available",
+          "Teachers are trained in life skills facilitation",
+          "Time allocated in school schedule"
+        ],
+        "stakeholder_practice_changes": {
+          "teachers": ["Facilitate weekly life skills sessions", "Integrate career examples in subjects", "Mentor students on career paths"],
+          "head_masters": ["Allocate time for career/life skills", "Invite career role models", "Track student career aspirations"],
+          "crp_crcc": ["Support life skills pedagogy", "Share career resources", "Coordinate career fairs"],
+          "brp_beo": ["Monitor life skills implementation", "Coordinate with industry partners", "Ensure counselor availability"],
+          "deo_diet": ["Develop life skills curriculum", "Train teachers on facilitation", "Connect with career guidance resources"]
+        },
+        "outcomes": [
+          {
+            "id": "OC1",
+            "description": "Students demonstrate career awareness and life skills",
+            "indicators": ["80% of students can articulate career interests"],
+            "means_of_verification": ["Student surveys", "Portfolio reviews"],
+            "outputs": [
+              {
+                "id": "OP1.1",
+                "description": "Life skills curriculum delivered",
+                "indicators": ["Weekly sessions held in all target schools"],
+                "means_of_verification": ["Session records"],
+                "activities": [
+                  {
+                    "id": "A1.1.1",
+                    "description": "Train teachers on life skills facilitation",
+                    "indicators": ["All teachers trained"],
+                    "means_of_verification": ["Training records"],
+                    "responsible_stakeholder": "DIET"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "tmpl_cpd_001",
+      "title": "Continuous Professional Development (CPD) Framework",
+      "description": "Institutionalized CPD system with peer learning, self-study, and mentoring support",
+      "category": "education",
+      "tags": ["CPD", "TPD", "continuous learning", "peer learning", "Shikshagraha"],
+      "preview": "Goal: Establish sustainable continuous professional development for all teachers.",
+      "content": {
+        "title": "Continuous Professional Development (CPD) Framework",
+        "goal": "Institutionalize continuous professional development for sustained teacher improvement",
+        "student_level_change": "Students benefit from teachers who continuously improve their practice",
+        "program_theme": "Teacher Professional Development",
+        "system_level": "District",
+        "goal_indicators": [
+          "100% of teachers complete 50 CPD hours annually",
+          "Teacher competency scores improve year-on-year"
+        ],
+        "assumptions": [
+          "CPD is recognized for career progression",
+          "Resources for CPD are sustained",
+          "Teachers value professional growth"
+        ],
+        "stakeholder_practice_changes": {
+          "teachers": ["Complete DIKSHA modules monthly", "Participate in peer learning circles", "Maintain professional portfolio"],
+          "head_masters": ["Facilitate school-based CPD", "Track teacher CPD hours", "Model continuous learning"],
+          "crp_crcc": ["Lead cluster CPD workshops", "Mentor teachers on CPD plans", "Document best practices"],
+          "brp_beo": ["Monitor CPD completion rates", "Recognize CPD champions", "Link CPD to performance"],
+          "deo_diet": ["Design CPD pathways", "Certify CPD completion", "Maintain CPD MIS"]
+        },
+        "outcomes": [
+          {
+            "id": "OC1",
+            "description": "Teachers engage in continuous professional development",
+            "indicators": ["90% of teachers complete annual CPD requirement"],
+            "means_of_verification": ["CPD tracking system", "Certificate records"],
+            "outputs": [
+              {
+                "id": "OP1.1",
+                "description": "CPD framework and tracking system established",
+                "indicators": ["CPD MIS operational in all blocks"],
+                "means_of_verification": ["System reports"],
+                "activities": [
+                  {
+                    "id": "A1.1.1",
+                    "description": "Develop CPD framework and guidelines",
+                    "indicators": ["Framework approved by state"],
+                    "means_of_verification": ["Approved document"],
+                    "responsible_stakeholder": "SCERT"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
     }
   ]
 }

@@ -4,20 +4,24 @@ Performs semantic search to find matching LFA templates from Pinecone.
 """
 
 import json
+import logging
 from typing import Dict, Any, List, Optional
 from openai import OpenAI
 from ..graph.state import AgentState, MatchedTemplate, WorkflowPhase
 
+logger = logging.getLogger("lfa_builder.agents.retriever")
 
-class Retriever:
+
+from .base import BaseAgent, AgentAPIError
+
+class Retriever(BaseAgent):
     """
     Semantic search agent that finds matching LFA templates.
     """
 
     def __init__(self, client: OpenAI, vector_store=None):
-        self.client = client
+        super().__init__(client)
         self.vector_store = vector_store
-        self.model = "gpt-4o"
         self.embedding_model = "text-embedding-3-small"
 
     def _create_search_query(self, state: AgentState) -> str:
@@ -46,12 +50,42 @@ class Retriever:
         return " ".join(filter(None, query_parts))
 
     def _get_embedding(self, text: str) -> List[float]:
-        """Get embedding vector for text."""
-        response = self.client.embeddings.create(
-            model=self.embedding_model,
-            input=text
-        )
-        return response.data[0].embedding
+        """Get embedding vector for text with robust error handling."""
+        retries = 0
+        while retries <= self.max_retries:
+            try:
+                response = self.client.embeddings.create(
+                    model=self.embedding_model,
+                    input=text,
+                    timeout=self.timeout
+                )
+                return response.data[0].embedding
+
+            except Exception as e:
+                # We can reuse the specific exception handling from BaseAgent if we refactor,
+                # but for now we'll implement a simplified robust retry here.
+                # In a full refactor, we would make _safe_api_call generic.
+                from openai import RateLimitError, APITimeoutError, APIConnectionError
+                import time
+                import logging
+                
+                logger = logging.getLogger("lfa_builder.agents.retriever")
+                
+                if isinstance(e, RateLimitError):
+                    logger.warning(f"Rate limit hit during embedding (attempt {retries + 1})")
+                    if retries < self.max_retries:
+                        retries += 1
+                        time.sleep(2 ** retries)
+                        continue
+                elif isinstance(e, (APITimeoutError, APIConnectionError)):
+                     logger.warning(f"Connection issue during embedding (attempt {retries + 1})")
+                     if retries < self.max_retries:
+                        retries += 1
+                        time.sleep(1)
+                        continue
+                
+                logger.error(f"Embedding failed: {e}")
+                raise AgentAPIError(f"Failed to generate embedding: {str(e)}", retryable=False)
 
     def process(self, state: AgentState) -> AgentState:
         """

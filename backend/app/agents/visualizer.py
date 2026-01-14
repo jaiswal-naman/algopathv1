@@ -21,10 +21,13 @@ class GraphVisualizer:
         if not text:
             return "Untitled"
 
-        # Remove special characters that break Mermaid
-        sanitized = re.sub(r'["\'\[\]{}()<>|&;]', '', text)
+        # Replace double quotes with single quotes to prevent breaking Mermaid strings
+        sanitized = text.replace('"', "'")
+        
+        # Remove newlines
+        sanitized = sanitized.replace('\n', ' ').replace('\r', '')
 
-        # Truncate if too long
+        # Truncate if too long (keeping it readable)
         if len(sanitized) > max_length:
             sanitized = sanitized[:max_length-3] + "..."
 

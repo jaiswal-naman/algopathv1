@@ -5,8 +5,19 @@ Manages semantic search for LFA templates.
 
 import os
 from typing import List, Dict, Any, Optional
-from pinecone import Pinecone, ServerlessSpec
 
+# Make Pinecone optional - gracefully handle import errors
+try:
+    from pinecone import Pinecone, ServerlessSpec
+    PINECONE_AVAILABLE = True
+except ImportError:
+    PINECONE_AVAILABLE = False
+    Pinecone = None
+    ServerlessSpec = None
+
+import logging
+
+logger = logging.getLogger("lfa_builder.db.vector")
 
 class VectorStore:
     """
@@ -31,6 +42,10 @@ class VectorStore:
 
     def _initialize(self):
         """Initialize Pinecone client and index."""
+        if not PINECONE_AVAILABLE:
+            logger.warning("Pinecone SDK not available - vector store disabled")
+            return
+
         try:
             self.client = Pinecone(api_key=self.api_key)
 
@@ -50,9 +65,10 @@ class VectorStore:
                 )
 
             self.index = self.client.Index(self.index_name)
+            logger.info(f"Connected to Pinecone index: {self.index_name}")
 
         except Exception as e:
-            print(f"Warning: Pinecone initialization failed: {e}")
+            logger.warning(f"Pinecone initialization failed: {e}")
             self.index = None
 
     def is_available(self) -> bool:
@@ -89,7 +105,7 @@ class VectorStore:
             )
             return True
         except Exception as e:
-            print(f"Upsert failed: {e}")
+            logger.error(f"Upsert failed: {e}")
             return False
 
     def upsert_batch(
@@ -118,7 +134,7 @@ class VectorStore:
                 count += len(batch)
             return count
         except Exception as e:
-            print(f"Batch upsert failed: {e}")
+            logger.error(f"Batch upsert failed: {e}")
             return count
 
     def search(
@@ -152,7 +168,7 @@ class VectorStore:
             )
             return results.to_dict()
         except Exception as e:
-            print(f"Search failed: {e}")
+            logger.error(f"Search failed: {e}")
             return {"matches": []}
 
     def delete(self, ids: List[str]) -> bool:
@@ -172,7 +188,7 @@ class VectorStore:
             self.index.delete(ids=ids)
             return True
         except Exception as e:
-            print(f"Delete failed: {e}")
+            logger.error(f"Delete failed: {e}")
             return False
 
     def get_stats(self) -> Dict[str, Any]:
@@ -183,12 +199,16 @@ class VectorStore:
         try:
             return self.index.describe_index_stats().to_dict()
         except Exception as e:
-            print(f"Stats failed: {e}")
+            logger.error(f"Stats failed: {e}")
             return {}
 
 
 def create_vector_store() -> Optional[VectorStore]:
     """Factory function to create vector store if configured."""
+    if not PINECONE_AVAILABLE:
+        logger.info("Pinecone SDK not installed - running without vector store")
+        return None
+
     api_key = os.getenv("PINECONE_API_KEY")
     if api_key:
         store = VectorStore(api_key=api_key)

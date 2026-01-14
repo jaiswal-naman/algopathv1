@@ -34,11 +34,11 @@ class Exporter:
         # Header
         writer.writerow(["Level", "ID", "Description", "Indicators", "Means of Verification", "Assumptions"])
 
-        # Goal (Impact)
+        # Goals (Impact)
         goal = lfa_data.get("goal", "")
         goal_indicators = "; ".join(lfa_data.get("goal_indicators", []))
         assumptions = "; ".join(lfa_data.get("assumptions", []))
-        writer.writerow(["Goal", "", goal, goal_indicators, "", assumptions])
+        writer.writerow(["GOAL", "", goal, goal_indicators, "", assumptions])
 
         # Iterate through hierarchical structure: Outcomes -> Outputs -> Activities
         for outcome in lfa_data.get("outcomes", []):
@@ -46,7 +46,7 @@ class Exporter:
             outcome_desc = outcome.get("description", "")
             outcome_indicators = "; ".join(outcome.get("indicators", []))
             outcome_verification = "; ".join(outcome.get("means_of_verification", []))
-            writer.writerow(["Outcome", outcome_id, outcome_desc, outcome_indicators, outcome_verification, ""])
+            writer.writerow(["OUTCOME", outcome_id, outcome_desc, outcome_indicators, outcome_verification, ""])
 
             # Outputs within this Outcome
             for output_item in outcome.get("outputs", []):
@@ -54,7 +54,7 @@ class Exporter:
                 output_desc = output_item.get("description", "")
                 output_indicators = "; ".join(output_item.get("indicators", []))
                 output_verification = "; ".join(output_item.get("means_of_verification", []))
-                writer.writerow(["Output", output_id, output_desc, output_indicators, output_verification, ""])
+                writer.writerow(["OUTPUT", output_id, output_desc, output_indicators, output_verification, ""])
 
                 # Activities within this Output
                 for activity in output_item.get("activities", []):
@@ -62,7 +62,7 @@ class Exporter:
                     activity_desc = activity.get("description", "")
                     activity_indicators = "; ".join(activity.get("indicators", []))
                     activity_verification = "; ".join(activity.get("means_of_verification", []))
-                    writer.writerow(["Activity", activity_id, activity_desc, activity_indicators, activity_verification, ""])
+                    writer.writerow(["ACTIVITY", activity_id, activity_desc, activity_indicators, activity_verification, ""])
 
         return output.getvalue()
 

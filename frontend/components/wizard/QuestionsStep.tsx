@@ -6,6 +6,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Spinner } from "@/components/ui/spinner";
+import { StakeholderPyramid } from "./StakeholderPyramid";
 import type { Question, Answer, ProgramBrief } from "@/types";
 import { CheckCircle, Circle, HelpCircle } from "lucide-react";
 
@@ -16,7 +17,9 @@ interface QuestionsStepProps {
   isLoading: boolean;
 }
 
+// Shikshagraha-aligned category colors
 const categoryColors: Record<string, string> = {
+  // Original categories
   scope: "bg-blue-500",
   resources: "bg-green-500",
   timeline: "bg-yellow-500",
@@ -24,6 +27,23 @@ const categoryColors: Record<string, string> = {
   risks: "bg-red-500",
   stakeholders: "bg-orange-500",
   sustainability: "bg-teal-500",
+  // Shikshagraha stakeholder categories
+  student_outcomes: "bg-orange-500",
+  teacher_practice: "bg-green-500",
+  hm_practice: "bg-emerald-500",
+  crp_role: "bg-blue-500",
+  block_support: "bg-indigo-500",
+  district_alignment: "bg-purple-500",
+};
+
+// Map question category to stakeholder level for highlighting
+const categoryToLevel: Record<string, string> = {
+  student_outcomes: "school",
+  teacher_practice: "school",
+  hm_practice: "school",
+  crp_role: "cluster",
+  block_support: "block",
+  district_alignment: "district",
 };
 
 export function QuestionsStep({
@@ -117,75 +137,87 @@ export function QuestionsStep({
         })}
       </div>
 
-      {/* Current Question */}
+      {/* Current Question with Stakeholder Pyramid */}
       {currentQuestion && (
-        <Card>
-          <CardHeader>
-            <div className="flex items-start justify-between">
-              <div>
-                <Badge
-                  className={categoryColors[currentQuestion.category] || "bg-gray-500"}
-                >
-                  {currentQuestion.category}
-                </Badge>
-                {currentQuestion.required && (
-                  <Badge variant="destructive" className="ml-2">
-                    Required
-                  </Badge>
-                )}
-              </div>
-              <span className="text-sm text-muted-foreground">
-                {currentIndex + 1} / {questions.length}
-              </span>
-            </div>
-            <CardTitle className="text-lg mt-2">
-              {currentQuestion.question}
-            </CardTitle>
-          </CardHeader>
-          <CardContent className="space-y-4">
-            <Textarea
-              placeholder="Type your answer here..."
-              value={answers[currentQuestion.id] || ""}
-              onChange={(e) =>
-                handleAnswerChange(currentQuestion.id, e.target.value)
-              }
-              rows={4}
-              disabled={isLoading}
-            />
-            <div className="flex justify-between">
-              <Button
-                variant="outline"
-                onClick={() => setCurrentIndex(Math.max(0, currentIndex - 1))}
-                disabled={currentIndex === 0}
-              >
-                Previous
-              </Button>
-              {currentIndex < questions.length - 1 ? (
-                <Button
-                  onClick={() =>
-                    setCurrentIndex(Math.min(questions.length - 1, currentIndex + 1))
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+          {/* Question Card */}
+          <div className="lg:col-span-2">
+            <Card>
+              <CardHeader>
+                <div className="flex items-start justify-between">
+                  <div>
+                    <Badge
+                      className={categoryColors[currentQuestion.category] || "bg-gray-500"}
+                    >
+                      {currentQuestion.category.replace(/_/g, " ")}
+                    </Badge>
+                    {currentQuestion.required && (
+                      <Badge variant="destructive" className="ml-2">
+                        Required
+                      </Badge>
+                    )}
+                  </div>
+                  <span className="text-sm text-muted-foreground">
+                    {currentIndex + 1} / {questions.length}
+                  </span>
+                </div>
+                <CardTitle className="text-lg mt-2">
+                  {currentQuestion.question}
+                </CardTitle>
+              </CardHeader>
+              <CardContent className="space-y-4">
+                <Textarea
+                  placeholder="Type your answer here..."
+                  value={answers[currentQuestion.id] || ""}
+                  onChange={(e) =>
+                    handleAnswerChange(currentQuestion.id, e.target.value)
                   }
-                >
-                  Next
-                </Button>
-              ) : (
-                <Button
-                  onClick={handleSubmit}
-                  disabled={!requiredAnswered || isLoading}
-                >
-                  {isLoading ? (
-                    <>
-                      <Spinner size="sm" className="mr-2" />
-                      Processing...
-                    </>
+                  rows={4}
+                  disabled={isLoading}
+                />
+                <div className="flex justify-between">
+                  <Button
+                    variant="outline"
+                    onClick={() => setCurrentIndex(Math.max(0, currentIndex - 1))}
+                    disabled={currentIndex === 0}
+                  >
+                    Previous
+                  </Button>
+                  {currentIndex < questions.length - 1 ? (
+                    <Button
+                      onClick={() =>
+                        setCurrentIndex(Math.min(questions.length - 1, currentIndex + 1))
+                      }
+                    >
+                      Next
+                    </Button>
                   ) : (
-                    "Find Templates"
+                    <Button
+                      onClick={handleSubmit}
+                      disabled={!requiredAnswered || isLoading}
+                    >
+                      {isLoading ? (
+                        <>
+                          <Spinner size="sm" className="mr-2" />
+                          Processing...
+                        </>
+                      ) : (
+                        "Find Templates"
+                      )}
+                    </Button>
                   )}
-                </Button>
-              )}
-            </div>
-          </CardContent>
-        </Card>
+                </div>
+              </CardContent>
+            </Card>
+          </div>
+
+          {/* Stakeholder Pyramid - shows on larger screens */}
+          <div className="hidden lg:block">
+            <StakeholderPyramid
+              highlightLevel={categoryToLevel[currentQuestion.category]}
+            />
+          </div>
+        </div>
       )}
 
       {/* Quick Submit */}

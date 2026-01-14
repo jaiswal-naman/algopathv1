@@ -63,6 +63,7 @@ def init_db():
 
 def get_db() -> Generator[Session, None, None]:
     """Get database session."""
+    print("DEBUG: original get_db called")
     db = SessionLocal()
     try:
         yield db
