@@ -58,6 +58,8 @@ class LFATemplate(Base):
 
 def init_db():
     """Initialize database tables."""
+    # Import models to ensure they're registered with Base
+    from app.db.models import User, EmailVerificationToken, PasswordResetToken
     Base.metadata.create_all(bind=engine)
 
 

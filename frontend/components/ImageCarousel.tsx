@@ -54,7 +54,7 @@ export function ImageCarousel({ images }: ImageCarouselProps) {
     };
 
     return (
-        <div className="relative w-full max-w-5xl mx-auto">
+        <div className="relative w-full max-w-7xl mx-auto">
             {/* Carousel Container */}
             <div className="relative h-[400px] md:h-[500px] rounded-2xl overflow-hidden glass-card">
                 <AnimatePresence initial={false} custom={direction} mode="wait">
@@ -82,7 +82,7 @@ export function ImageCarousel({ images }: ImageCarouselProps) {
                             <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/50 to-transparent" />
 
                             {/* Content */}
-                            <div className="absolute bottom-0 left-0 right-0 p-8 text-white">
+                            <div className="absolute bottom-0 left-0 right-0 p-8 text-white text-center">
                                 <motion.h3
                                     initial={{ y: 20, opacity: 0 }}
                                     animate={{ y: 0, opacity: 1 }}
@@ -95,7 +95,7 @@ export function ImageCarousel({ images }: ImageCarouselProps) {
                                     initial={{ y: 20, opacity: 0 }}
                                     animate={{ y: 0, opacity: 1 }}
                                     transition={{ delay: 0.3 }}
-                                    className="text-lg text-slate-300 max-w-2xl"
+                                    className="text-lg text-slate-300 max-w-3xl mx-auto"
                                 >
                                     {images[currentIndex].description}
                                 </motion.p>
@@ -130,8 +130,8 @@ export function ImageCarousel({ images }: ImageCarouselProps) {
                                 setCurrentIndex(index);
                             }}
                             className={`h-2 rounded-full transition-all duration-300 ${index === currentIndex
-                                    ? "w-8 bg-emerald-500"
-                                    : "w-2 bg-slate-500 hover:bg-slate-400"
+                                ? "w-8 bg-emerald-500"
+                                : "w-2 bg-slate-500 hover:bg-slate-400"
                                 }`}
                             aria-label={`Go to slide ${index + 1}`}
                         />

@@ -101,12 +101,15 @@ app.add_middleware(
         "Origin",
         "X-Requested-With",
     ],
+    expose_headers=["Content-Type", "Authorization"],
 )
 
 # Include API routes
 app.include_router(router)
 from .export_routes import router as export_router
 app.include_router(export_router, prefix="/api", tags=["Export"])
+from .auth import router as auth_router
+app.include_router(auth_router, tags=["Authentication"])
 
 
 @app.get("/")

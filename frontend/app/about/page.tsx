@@ -90,19 +90,19 @@ export default function AboutPage() {
                 {/* Feature Cards */}
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6 animate-fade-in-up animation-delay-400">
                     <FlippableCard
-                        image="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=800&h=600&fit=crop"
+                        image="/feature1.png"
                         title="Guided Thinking"
                         description="Break down complex educational challenges into simple, structured steps."
                         color="from-emerald-500 to-teal-500"
                     />
                     <FlippableCard
-                        image="https://images.unsplash.com/photo-1559027615-cd4628902d4a?w=800&h=600&fit=crop"
+                        image="/feature2.jpg"
                         title="Faster Design"
                         description="Reduce program design effort by up to 60% through intelligent workflows."
                         color="from-cyan-500 to-blue-500"
                     />
                     <FlippableCard
-                        image="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=800&h=600&fit=crop"
+                        image="/feature3.png"
                         title="Logic Validation"
                         description="AI checks consistency across outcomes, interventions, and indicators."
                         color="from-purple-500 to-pink-500"
