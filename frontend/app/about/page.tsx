@@ -1,8 +1,45 @@
 "use client";
 
 import { Edit3 } from "lucide-react";
+import { FAQSection } from "@/components/FAQSection";
+import { FlippableCard } from "@/components/ui/FlippableCard";
 
 export default function AboutPage() {
+    const faqs = [
+        {
+            question: "What is AlgoPath?",
+            answer: "AlgoPath is an AI-powered platform that helps education NGOs design clear, system-aligned programs using the Common Logical Framework Approach (LFA). It eliminates the 'blank page problem' by guiding organizations through structured program design without needing external consultants."
+        },
+        {
+            question: "Who is AlgoPath designed for?",
+            answer: "AlgoPath is specifically designed for education NGOs and organizations working in the public education sector in India. It's built for teams with little to no technical design expertise who want to create professional, well-structured program frameworks."
+        },
+        {
+            question: "How does AlgoPath reduce design time?",
+            answer: "AlgoPath reduces program design effort by up to 60% through intelligent workflows, guided thinking processes, and AI-assisted validation. It breaks down complex challenges into simple, structured steps that can be completed much faster than traditional methods."
+        },
+        {
+            question: "What is the Logical Framework Approach (LFA)?",
+            answer: "The Logical Framework Approach is a systematic methodology for planning, implementing, and evaluating development programs. It helps organizations define clear objectives, identify stakeholders, map interventions, and establish measurable indicators for success."
+        },
+        {
+            question: "Do I need technical expertise to use AlgoPath?",
+            answer: "No! AlgoPath is designed to be non-technical and user-friendly. The platform guides you through each step with clear instructions, making it accessible to teams without design or technical expertise."
+        },
+        {
+            question: "How does the AI validation work?",
+            answer: "Our AI checks the consistency and logic across your program's outcomes, interventions, and indicators. It ensures that your framework is coherent, aligned with best practices, and follows the LFA methodology correctly."
+        },
+        {
+            question: "Can I export my LFA documents?",
+            answer: "Yes! Once you've completed your framework, you can export it in multiple formats including PDF, Word documents, and visual diagrams. This makes it easy to share with stakeholders and integrate into your organization's workflows."
+        },
+        {
+            question: "Is AlgoPath free to use?",
+            answer: "AlgoPath is currently available for education NGOs working in India. Please contact us at kunupayal1@gmail.com for information about pricing and access to the platform."
+        }
+    ];
+
     return (
         <div className="min-h-[calc(100vh-200px)] relative flex flex-col items-center justify-center px-4 py-12">
             {/* Floating decorative elements */}
@@ -13,8 +50,11 @@ export default function AboutPage() {
             <div className="max-w-5xl w-full space-y-12 relative z-10">
                 {/* Hero Section */}
                 <div className="text-left space-y-6 animate-fade-in-up">
-                    <h1 className="text-5xl md:text-6xl font-bold text-white leading-tight">
-                        About AlgoPath
+                    <h1 className="text-5xl md:text-6xl gap-2 font-bold text-white leading-tight">
+                        About
+                        <span className="bg-gradient-to-r pl-4 from-emerald-400 via-teal-400 to-cyan-400 bg-clip-text text-transparent">
+                            AlgoPath
+                        </span>
                     </h1>
                     <p className="text-xl md:text-2xl text-slate-300 max-w-4xl">
                         AlgoPath empowers education NGOs to design clear, system-aligned
@@ -49,59 +89,29 @@ export default function AboutPage() {
 
                 {/* Feature Cards */}
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6 animate-fade-in-up animation-delay-400">
-                    {/* Guided Thinking */}
-                    <div className="glass-card rounded-2xl p-8 card-hover group">
-                        <div className="flex flex-col items-center text-center space-y-4">
-                            <div className="p-4 bg-emerald-500/20 rounded-full transition-all duration-300 group-hover:scale-110 group-hover:bg-emerald-500/30">
-                                <svg className="h-12 w-12 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
-                                </svg>
-                            </div>
-                            <h3 className="text-xl font-bold text-white">
-                                Guided Thinking
-                            </h3>
-                            <p className="text-slate-300 text-sm leading-relaxed">
-                                Break down complex educational challenges into simple,
-                                structured steps.
-                            </p>
-                        </div>
-                    </div>
+                    <FlippableCard
+                        image="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=800&h=600&fit=crop"
+                        title="Guided Thinking"
+                        description="Break down complex educational challenges into simple, structured steps."
+                        color="from-emerald-500 to-teal-500"
+                    />
+                    <FlippableCard
+                        image="https://images.unsplash.com/photo-1559027615-cd4628902d4a?w=800&h=600&fit=crop"
+                        title="Faster Design"
+                        description="Reduce program design effort by up to 60% through intelligent workflows."
+                        color="from-cyan-500 to-blue-500"
+                    />
+                    <FlippableCard
+                        image="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=800&h=600&fit=crop"
+                        title="Logic Validation"
+                        description="AI checks consistency across outcomes, interventions, and indicators."
+                        color="from-purple-500 to-pink-500"
+                    />
+                </div>
 
-                    {/* Faster Design */}
-                    <div className="glass-card rounded-2xl p-8 card-hover group">
-                        <div className="flex flex-col items-center text-center space-y-4">
-                            <div className="p-4 bg-emerald-500/20 rounded-full transition-all duration-300 group-hover:scale-110 group-hover:bg-emerald-500/30">
-                                <svg className="h-12 w-12 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
-                                </svg>
-                            </div>
-                            <h3 className="text-xl font-bold text-white">
-                                Faster Design
-                            </h3>
-                            <p className="text-slate-300 text-sm leading-relaxed">
-                                Reduce program design effort by up to 60% through
-                                intelligent workflows.
-                            </p>
-                        </div>
-                    </div>
-
-                    {/* Logic Validation */}
-                    <div className="glass-card rounded-2xl p-8 card-hover group">
-                        <div className="flex flex-col items-center text-center space-y-4">
-                            <div className="p-4 bg-emerald-500/20 rounded-full transition-all duration-300 group-hover:scale-110 group-hover:bg-emerald-500/30">
-                                <svg className="h-12 w-12 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                                </svg>
-                            </div>
-                            <h3 className="text-xl font-bold text-white">
-                                Logic Validation
-                            </h3>
-                            <p className="text-slate-300 text-sm leading-relaxed">
-                                AI checks consistency across outcomes, interventions,
-                                and indicators.
-                            </p>
-                        </div>
-                    </div>
+                {/* FAQ Section */}
+                <div className="animate-fade-in-up animation-delay-600 pt-8">
+                    <FAQSection faqs={faqs} />
                 </div>
             </div>
         </div>

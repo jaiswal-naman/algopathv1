@@ -4,6 +4,7 @@ import { cn } from "@/lib/utils";
 import { Check, Target, Search, FileText, Trophy } from "lucide-react";
 import type { WizardStep } from "@/types";
 import type { LucideIcon } from "lucide-react";
+import { motion } from "framer-motion";
 
 interface Step {
   id: WizardStep;
@@ -28,25 +29,37 @@ interface StepIndicatorProps {
 
 export function StepIndicator({ currentStep }: StepIndicatorProps) {
   const currentIndex = stepOrder.indexOf(currentStep);
-  // Progress shows completed steps only (0%, 25%, 50%, 75%, 100%)
-  // If currentStep is "completed", show 100%
   const progress = currentStep === "completed" ? 100 : Math.round((currentIndex / steps.length) * 100);
 
   return (
     <nav aria-label="Progress" className="mb-6 md:mb-8">
       {/* Progress percentage */}
-      <div className="flex justify-between items-center mb-2">
+      <motion.div
+        className="flex justify-between items-center mb-2"
+        initial={{ opacity: 0, y: -10 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
+      >
         <span className="text-xs md:text-sm font-medium text-slate-400">
           Progress
         </span>
-        <span className="text-xs md:text-sm font-bold text-emerald-400">
+        <motion.span
+          className="text-xs md:text-sm font-bold text-emerald-400"
+          key={progress}
+          initial={{ scale: 1.2 }}
+          animate={{ scale: 1 }}
+          transition={{ duration: 0.3 }}
+        >
           {progress}% Complete
-        </span>
-      </div>
+        </motion.span>
+      </motion.div>
+
       <div className="h-2 bg-slate-700 rounded-full mb-4 md:mb-6 overflow-hidden">
-        <div
-          className="h-full bg-gradient-to-r from-emerald-500 to-emerald-400 transition-all duration-500 ease-out rounded-full"
-          style={{ width: `${progress}%` }}
+        <motion.div
+          className="h-full bg-gradient-to-r from-emerald-500 via-teal-500 to-cyan-500 rounded-full"
+          initial={{ width: 0 }}
+          animate={{ width: `${progress}%` }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
         />
       </div>
 
@@ -62,15 +75,20 @@ export function StepIndicator({ currentStep }: StepIndicatorProps) {
             return (
               <div key={step.id} className="flex items-center flex-1">
                 {index > 0 && (
-                  <div
+                  <motion.div
                     className={cn(
-                      "h-0.5 flex-1 transition-colors duration-300 hidden sm:block",
-                      // Line is filled if previous step is completed
-                      index - 1 < currentIndex ? "bg-emerald-500" : "bg-slate-700"
+                      "h-0.5 flex-1 transition-colors duration-300 hidden sm:block"
                     )}
+                    initial={{ scaleX: 0 }}
+                    animate={{
+                      scaleX: 1,
+                      backgroundColor: index - 1 < currentIndex ? "#10b981" : "#334155"
+                    }}
+                    transition={{ duration: 0.5, delay: index * 0.1 }}
+                    style={{ originX: 0 }}
                   />
                 )}
-                <div
+                <motion.div
                   className={cn(
                     "flex items-center justify-center rounded-full border-2 transition-all duration-300 flex-shrink-0",
                     "h-8 w-8 sm:h-10 sm:w-10 md:h-12 md:w-12",
@@ -80,20 +98,47 @@ export function StepIndicator({ currentStep }: StepIndicatorProps) {
                         ? "border-emerald-500 bg-emerald-500 text-white shadow-lg shadow-emerald-500/50 ring-2 ring-emerald-500/30"
                         : "border-slate-600 bg-slate-800 text-slate-500"
                   )}
+                  initial={{ scale: 0 }}
+                  animate={{ scale: 1 }}
+                  transition={{ duration: 0.4, delay: index * 0.1 }}
+                  whileHover={{ scale: 1.1 }}
                 >
                   {isCompleted ? (
-                    <Check className="h-4 w-4 sm:h-5 sm:w-5 md:h-6 md:w-6" />
+                    <motion.div
+                      initial={{ scale: 0, rotate: -180 }}
+                      animate={{ scale: 1, rotate: 0 }}
+                      transition={{ duration: 0.5 }}
+                    >
+                      <Check className="h-4 w-4 sm:h-5 sm:w-5 md:h-6 md:w-6" />
+                    </motion.div>
                   ) : (
-                    <StepIcon className="h-3 w-3 sm:h-4 sm:w-4 md:h-5 md:w-5" />
+                    <motion.div
+                      animate={isCurrent ? {
+                        scale: [1, 1.1, 1],
+                        rotate: [0, 5, -5, 0]
+                      } : {}}
+                      transition={{
+                        duration: 2,
+                        repeat: isCurrent ? Infinity : 0,
+                        ease: "easeInOut"
+                      }}
+                    >
+                      <StepIcon className="h-3 w-3 sm:h-4 sm:w-4 md:h-5 md:w-5" />
+                    </motion.div>
                   )}
-                </div>
+                </motion.div>
                 {index < steps.length - 1 && (
-                  <div
+                  <motion.div
                     className={cn(
-                      "h-0.5 flex-1 transition-colors duration-300 hidden sm:block",
-                      // Line is filled only if current step is completed
-                      isCompleted ? "bg-emerald-500" : "bg-slate-700"
+                      "h-0.5 flex-1 transition-colors duration-300 hidden sm:block"
                     )}
+                    initial={{ scaleX: 0 }}
+                    animate={{
+                      scaleX: 1,
+                      backgroundColor: isCompleted ? "#10b981" : "#334155"
+                    }}
+                    transition={{ duration: 0.5, delay: index * 0.1 + 0.2 }}
+                    style={{ originX: 0 }}
                   />
                 )}
               </div>
@@ -108,7 +153,13 @@ export function StepIndicator({ currentStep }: StepIndicatorProps) {
             const isCurrent = index === currentIndex;
 
             return (
-              <div key={step.id} className="flex-1 text-center px-1">
+              <motion.div
+                key={step.id}
+                className="flex-1 text-center px-1"
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.4, delay: index * 0.1 + 0.3 }}
+              >
                 <p
                   className={cn(
                     "text-xs sm:text-sm font-medium",
@@ -128,7 +179,7 @@ export function StepIndicator({ currentStep }: StepIndicatorProps) {
                 <p className="text-xs text-slate-500 hidden md:block mt-0.5">
                   {step.description}
                 </p>
-              </div>
+              </motion.div>
             );
           })}
         </div>

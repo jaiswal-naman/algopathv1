@@ -13,6 +13,8 @@ import { TheoryOfChange } from "./TheoryOfChange";
 import { LogframeMatrix } from "./LogframeMatrix";
 import { ExportControlsPanel } from "./ExportControlsPanel";
 import type { LFADocument } from "@/types";
+import { motion, AnimatePresence } from "framer-motion";
+import { fadeInUp, expandCollapse, staggerContainer, staggerItem } from "@/lib/animations";
 import {
     RefreshCw,
     Download,
@@ -177,112 +179,224 @@ export function ResultStep({
 
             {/* Tab Content */}
             {!activeTool && activeTab === "logframe" && (
-                <LogframeMatrix lfaDocument={localDocument} />
+                <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -20 }}
+                    transition={{ duration: 0.3 }}
+                >
+                    <LogframeMatrix lfaDocument={localDocument} />
+                </motion.div>
             )}
 
             {!activeTool && activeTab === "export" && (
-                <ExportControlsPanel
-                    lfaDocument={localDocument}
-                    sessionId={sessionId}
-                />
+                <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -20 }}
+                    transition={{ duration: 0.3 }}
+                >
+                    <ExportControlsPanel
+                        lfaDocument={localDocument}
+                        sessionId={sessionId}
+                    />
+                </motion.div>
             )}
 
-            {/* Advanced Tool Content */}
-            {activeTool === "editor" && (
-                <Card className="bg-slate-800/50 border-slate-700">
-                    <CardContent className="p-0">
-                        <ManualGrid data={localDocument} onChange={setLocalDocument} />
-                    </CardContent>
-                </Card>
-            )}
+            {/* Advanced Tool Content with Animations */}
+            <AnimatePresence mode="wait">
+                {activeTool === "editor" && (
+                    <motion.div
+                        key="editor"
+                        initial={{ opacity: 0, x: -20 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        exit={{ opacity: 0, x: 20 }}
+                        transition={{ duration: 0.3 }}
+                    >
+                        <Card className="bg-slate-800/50 border-slate-700">
+                            <CardContent className="p-0">
+                                <ManualGrid data={localDocument} onChange={setLocalDocument} />
+                            </CardContent>
+                        </Card>
+                    </motion.div>
+                )}
 
-            {activeTool === "interview" && (
-                <Card className="bg-slate-800/50 border-slate-700">
-                    <CardContent className="p-6">
-                        <StakeholderInterviewPanel
-                            lfaDocument={localDocument}
-                            sessionId={sessionId}
-                        />
-                    </CardContent>
-                </Card>
-            )}
+                {activeTool === "interview" && (
+                    <motion.div
+                        key="interview"
+                        initial={{ opacity: 0, x: -20 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        exit={{ opacity: 0, x: 20 }}
+                        transition={{ duration: 0.3 }}
+                    >
+                        <Card className="bg-slate-800/50 border-slate-700">
+                            <CardContent className="p-6">
+                                <StakeholderInterviewPanel
+                                    lfaDocument={localDocument}
+                                    sessionId={sessionId}
+                                />
+                            </CardContent>
+                        </Card>
+                    </motion.div>
+                )}
 
-            {activeTool === "logic" && (
-                <Card className="bg-slate-800/50 border-slate-700">
-                    <CardContent className="p-6">
-                        <LogicChallengerPanel
-                            lfaDocument={localDocument}
-                            sessionId={sessionId}
-                        />
-                    </CardContent>
-                </Card>
-            )}
+                {activeTool === "logic" && (
+                    <motion.div
+                        key="logic"
+                        initial={{ opacity: 0, x: -20 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        exit={{ opacity: 0, x: 20 }}
+                        transition={{ duration: 0.3 }}
+                    >
+                        <Card className="bg-slate-800/50 border-slate-700">
+                            <CardContent className="p-6">
+                                <LogicChallengerPanel
+                                    lfaDocument={localDocument}
+                                    sessionId={sessionId}
+                                />
+                            </CardContent>
+                        </Card>
+                    </motion.div>
+                )}
 
-            {activeTool === "pyramid" && (
-                <Card className="bg-slate-800/50 border-slate-700">
-                    <CardContent className="p-6">
-                        <InteractivePyramid lfaDocument={localDocument} />
-                    </CardContent>
-                </Card>
-            )}
+                {activeTool === "pyramid" && (
+                    <motion.div
+                        key="pyramid"
+                        initial={{ opacity: 0, scale: 0.95 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        exit={{ opacity: 0, scale: 0.95 }}
+                        transition={{ duration: 0.3 }}
+                    >
+                        <Card className="bg-slate-800/50 border-slate-700">
+                            <CardContent className="p-6">
+                                <InteractivePyramid lfaDocument={localDocument} />
+                            </CardContent>
+                        </Card>
+                    </motion.div>
+                )}
 
-            {activeTool === "score" && (
-                <Card className="bg-slate-800/50 border-slate-700">
-                    <CardContent className="p-6">
-                        <HealthScoreDashboard lfaDocument={localDocument} />
-                    </CardContent>
-                </Card>
-            )}
+                {activeTool === "score" && (
+                    <motion.div
+                        key="score"
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: -20 }}
+                        transition={{ duration: 0.3 }}
+                    >
+                        <Card className="bg-slate-800/50 border-slate-700">
+                            <CardContent className="p-6">
+                                <HealthScoreDashboard lfaDocument={localDocument} />
+                            </CardContent>
+                        </Card>
+                    </motion.div>
+                )}
 
-            {activeTool === "whatif" && (
-                <Card className="bg-slate-800/50 border-slate-700">
-                    <CardContent className="p-6">
-                        <WhatIfEngine
-                            lfaDocument={localDocument}
-                            sessionId={sessionId}
-                        />
-                    </CardContent>
-                </Card>
-            )}
+                {activeTool === "whatif" && (
+                    <motion.div
+                        key="whatif"
+                        initial={{ opacity: 0, x: -20 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        exit={{ opacity: 0, x: 20 }}
+                        transition={{ duration: 0.3 }}
+                    >
+                        <Card className="bg-slate-800/50 border-slate-700">
+                            <CardContent className="p-6">
+                                <WhatIfEngine
+                                    lfaDocument={localDocument}
+                                    sessionId={sessionId}
+                                />
+                            </CardContent>
+                        </Card>
+                    </motion.div>
+                )}
 
-            {activeTool === "toc" && (
-                <Card className="bg-slate-800/50 border-slate-700">
-                    <CardContent className="p-6">
-                        <TheoryOfChange lfaDocument={localDocument} />
-                    </CardContent>
-                </Card>
-            )}
+                {activeTool === "toc" && (
+                    <motion.div
+                        key="toc"
+                        initial={{ opacity: 0, scale: 0.95 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        exit={{ opacity: 0, scale: 0.95 }}
+                        transition={{ duration: 0.3 }}
+                    >
+                        <Card className="bg-slate-800/50 border-slate-700">
+                            <CardContent className="p-6">
+                                <TheoryOfChange lfaDocument={localDocument} />
+                            </CardContent>
+                        </Card>
+                    </motion.div>
+                )}
+            </AnimatePresence>
 
-            {/* Advanced Tools - Static Section */}
-            <div className="bg-slate-900/50 border-2 border-emerald-500/50 rounded-xl overflow-hidden shadow-xl">
+            {/* Advanced Tools - Animated Section */}
+            <motion.div
+                initial="hidden"
+                animate="visible"
+                variants={fadeInUp}
+                className="bg-slate-900/50 border-2 border-emerald-500/50 rounded-xl overflow-hidden shadow-xl"
+            >
                 <div className="p-4">
-                    <h4 className="text-sm font-semibold text-emerald-400 mb-3 flex items-center gap-2">
+                    <motion.h4
+                        className="text-sm font-semibold text-emerald-400 mb-3 flex items-center gap-2"
+                        initial={{ opacity: 0, x: -20 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ duration: 0.5 }}
+                    >
                         <Settings className="h-4 w-4" />
                         Advanced Tools
-                    </h4>
-                    <div className="flex flex-wrap gap-2">
-                        {advancedTools.map((tool) => {
+                    </motion.h4>
+                    <motion.div
+                        className="flex flex-wrap gap-2"
+                        variants={staggerContainer}
+                        initial="hidden"
+                        animate="visible"
+                    >
+                        {advancedTools.map((tool, index) => {
                             const isActive = activeTool === tool.id;
                             return (
-                                <button
+                                <motion.button
                                     key={tool.id}
+                                    variants={staggerItem}
+                                    whileHover={{ scale: 1.05, y: -2 }}
+                                    whileTap={{ scale: 0.95 }}
                                     onClick={() => setActiveTool(activeTool === tool.id ? null : tool.id)}
-                                    className={`flex items-center gap-2 px-4 py-2.5 rounded-lg font-medium transition-all duration-300 whitespace-nowrap ${isActive
-                                        ? "bg-emerald-500 text-white shadow-lg shadow-emerald-500/50 scale-105"
+                                    className={`flex items-center gap-2 px-4 py-2.5 rounded-lg font-medium transition-all duration-300 whitespace-nowrap relative overflow-hidden ${isActive
+                                        ? "bg-emerald-500 text-white shadow-lg shadow-emerald-500/50"
                                         : "bg-slate-800 text-slate-300 hover:bg-slate-700 hover:text-white border border-slate-700 hover:border-emerald-500/30"
                                         }`}
                                 >
-                                    <tool.icon className="h-4 w-4" />
-                                    <span className="text-sm font-semibold">{tool.label}</span>
-                                    {isActive && (
-                                        <div className="w-2 h-2 bg-white rounded-full animate-pulse" />
+                                    {/* Animated background on hover */}
+                                    {!isActive && (
+                                        <motion.div
+                                            className="absolute inset-0 bg-gradient-to-r from-emerald-500/0 via-emerald-500/10 to-emerald-500/0"
+                                            initial={{ x: "-100%" }}
+                                            whileHover={{ x: "100%" }}
+                                            transition={{ duration: 0.6 }}
+                                        />
                                     )}
-                                </button>
+
+                                    <motion.div
+                                        animate={isActive ? { rotate: [0, 5, -5, 0] } : {}}
+                                        transition={{ duration: 0.5 }}
+                                        className="relative z-10"
+                                    >
+                                        <tool.icon className="h-4 w-4" />
+                                    </motion.div>
+
+                                    <span className="text-sm font-semibold relative z-10">{tool.label}</span>
+
+                                    {isActive && (
+                                        <motion.div
+                                            className="w-2 h-2 bg-white rounded-full relative z-10"
+                                            animate={{ scale: [1, 1.2, 1] }}
+                                            transition={{ duration: 1, repeat: Infinity }}
+                                        />
+                                    )}
+                                </motion.button>
                             );
                         })}
-                    </div>
+                    </motion.div>
                 </div>
-            </div>
+            </motion.div>
         </div>
     );
 }

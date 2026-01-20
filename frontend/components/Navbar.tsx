@@ -32,6 +32,12 @@ export function Navbar() {
                             Home
                         </a>
                         <a
+                            href="/about"
+                            className="text-sm font-bold text-xl gap-4 text-slate-300 hover:text-emerald-400 transition-colors"
+                        >
+                            About
+                        </a>
+                        <a
                             href="/lfa-builder"
                             className="text-sm font-bold text-xl gap-4 text-slate-300 hover:text-emerald-400 transition-colors"
                         >
@@ -42,12 +48,6 @@ export function Navbar() {
                             className="text-sm font-bold text-xl gap-4 text-slate-300 hover:text-emerald-400 transition-colors"
                         >
                             Contact
-                        </a>
-                        <a
-                            href="/about"
-                            className="text-sm font-bold text-xl gap-4 text-slate-300 hover:text-emerald-400 transition-colors"
-                        >
-                            About
                         </a>
                         <button className="px-4 py-2 border font-bold text-xl gap-4 border-slate-600 hover:border-emerald-500 text-slate-300 hover:text-white rounded-lg text-sm font-medium transition-all">
                             Sign Out
